@@ -9,15 +9,25 @@ fetch("https://striveschool-api.herokuapp.com/books")
     console.log("Libri ricevuti:", data);
     const imgUrl = data[0].img;
     const imgTitle = data[0].title;
+    const imgUrl2 = data[1].img;
+    const imgTitle2 = data[1].title;
+    const discardBtn = document.getElementById("discard-btn-1");
 
-    // Seleziona gli elementi HTML
+    discardBtn.addEventListener("click", () => {
+      const card = discardBtn.closest(".card"); // Trova l'elemento card più vicino al pulsante
+      card.parentElement.removeChild(card); // Rimuove la card dalla pagina
+    });
+
     const img1 = document.getElementById("img-1");
     const title1 = document.getElementById("title-img-1");
+    const img2 = document.getElementById("img-2");
+    const title2 = document.getElementById("title-img-2");
 
-    // Assegna i valori agli elementi
     img1.src = imgUrl;
-    img1.alt = imgTitle; // Puoi aggiungere anche il titolo come alt dell'immagine
-    title1.innerText = imgTitle; // Aggiungi il titolo nell'elemento h5
+    img2.src = imgUrl2;
+    img1.alt = imgTitle;
+    img1.alt = imgTitle2;
+    title2.innerText = imgTitle;
   })
   .catch((err) => {
     console.log("Si è verificato un errore:", err);
